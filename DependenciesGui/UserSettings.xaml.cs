@@ -177,6 +177,8 @@ namespace Dependencies
     {
         private string PeviewerPath;
         private ICollection<FontFamily> _familyCollection;          // see FamilyCollection property
+        private FontFamily InitialSelectedFontFamily;
+        private double _initialFontSize;
         private FontFamily SelectedFontFamily;
         private double _fontSize;
 
@@ -195,8 +197,8 @@ namespace Dependencies
             base.OnInitialized(e);
             InitializeFontFamilyList();
 
-            SelectedFontFamily = new FontFamily(Dependencies.Properties.Settings.Default.Font);
-            _fontSize = Dependencies.Properties.Settings.Default.FontSize;
+            InitialSelectedFontFamily = SelectedFontFamily = new FontFamily(Dependencies.Properties.Settings.Default.Font);
+            _initialFontSize = _fontSize = Dependencies.Properties.Settings.Default.FontSize;
             SelectListItem(FontFamilyList, FontFamilyListItem.GetDisplayName(SelectedFontFamily));
             FontFamilyList.SelectionChanged += new SelectionChangedEventHandler(fontFamilyList_SelectionChanged);
             TextBoxFontSize.Text = _fontSize.ToString();
@@ -205,6 +207,7 @@ namespace Dependencies
 
         private void OnCancel(object sender, RoutedEventArgs e)
         {
+            Helper.SetFontForWholeApp(new FontFamily(FontFamilyListItem.GetDisplayName(InitialSelectedFontFamily)), _initialFontSize);
             this.Close();
         }
 
@@ -309,6 +312,7 @@ namespace Dependencies
             if (item != null)
             {
                 SelectedFontFamily = item.FontFamily;
+                Helper.SetFontForWholeApp(new FontFamily(FontFamilyListItem.GetDisplayName(SelectedFontFamily)), int.Parse(TextBoxFontSize.Text));
             }
         }
 
