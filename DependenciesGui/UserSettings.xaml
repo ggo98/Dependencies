@@ -143,6 +143,7 @@
                     Width="60"
                     Margin="2"
                     Padding="2"
+                    IsCancel="true"
                     Click="OnCancel" />
 
             <Button Content="OK" 
@@ -150,6 +151,7 @@
                     Width="60"
                     Margin="2"
                     Padding="2"
+                    IsDefault="true"
                     Click="OnValidate" />
         </StackPanel>
 
