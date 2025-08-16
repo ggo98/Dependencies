@@ -8,13 +8,13 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="UserSettings"
-        Height="400" Width="700"
+        Height="430" Width="700"
         WindowStartupLocation="CenterOwner">
     <Window.Resources>
         <local:TreeBuildingBehaviour x:Key="TreeBuildingBehaviourConverter"/>
         <local:BinaryCacheOption x:Key="BinaryCacheOptionConverter"/>
     </Window.Resources>
-    <Grid Margin="10 20 20 20" >
+    <Grid Margin="10,20,20,24" >
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -71,7 +71,7 @@
                     Click="OnPeviewerPathSettingChange" />
         </Grid>
 
-        
+
         <!-- Tree build behaviour selection -->
         <Label Margin="5" 
                Grid.Row="2"
@@ -114,11 +114,27 @@
                VerticalAlignment="Top" />
 
         <ListBox Name="FontFamilyList"
-                 Margin="5"
+                 Margin="5,5,5,5"
                  Grid.Row="4"
                  Grid.Column="1" />
-        
-        
+
+        <!-- Font size selection -->
+        <Label Grid.Column="0"
+       Grid.Row="5"
+       Content="Size:" 
+       HorizontalAlignment="Left" 
+       VerticalAlignment="Center"
+       Margin="5"/>
+
+        <TextBox x:Name="TextBoxFontSize" 
+         Grid.Column="1"
+         Grid.Row="5"
+         HorizontalAlignment="Left" 
+         Margin="5"
+         TextWrapping="Wrap" 
+         Text="16" 
+         VerticalAlignment="Center" 
+         Width="120"/>
         <!-- Buttons -->
         <StackPanel Grid.Row="5" Grid.Column="1" 
                     Orientation="Horizontal" HorizontalAlignment="Right">

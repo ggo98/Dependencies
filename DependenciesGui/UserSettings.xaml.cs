@@ -178,6 +178,7 @@ namespace Dependencies
         private string PeviewerPath;
         private ICollection<FontFamily> _familyCollection;          // see FamilyCollection property
         private FontFamily SelectedFontFamily;
+        private double _fontSize;
 
         public UserSettings()
         {
@@ -195,8 +196,10 @@ namespace Dependencies
             InitializeFontFamilyList();
 
             SelectedFontFamily = new FontFamily(Dependencies.Properties.Settings.Default.Font);
+            _fontSize = Dependencies.Properties.Settings.Default.FontSize;
             SelectListItem(FontFamilyList, FontFamilyListItem.GetDisplayName(SelectedFontFamily));
             FontFamilyList.SelectionChanged += new SelectionChangedEventHandler(fontFamilyList_SelectionChanged);
+            TextBoxFontSize.Text = _fontSize.ToString();
             
         }
 
@@ -234,8 +237,9 @@ namespace Dependencies
                 Dependencies.Properties.Settings.Default.BinaryCacheOptionValue = newValue;
             }
 
-
+            Helper.SetFontForWholeApp(new FontFamily(FontFamilyListItem.GetDisplayName(SelectedFontFamily)), int.Parse(TextBoxFontSize.Text));
             Dependencies.Properties.Settings.Default.Font = FontFamilyListItem.GetDisplayName(SelectedFontFamily);
+            Dependencies.Properties.Settings.Default.FontSize = double.Parse(TextBoxFontSize.Text);
             this.Close();
         }
 
