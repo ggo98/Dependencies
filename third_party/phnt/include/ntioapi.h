@@ -680,6 +680,7 @@ typedef struct _FILE_ID_EXTD_BOTH_DIR_INFORMATION
     WCHAR FileName[1];
 } FILE_ID_EXTD_BOTH_DIR_INFORMATION, *PFILE_ID_EXTD_BOTH_DIR_INFORMATION;
 
+/* already defined in C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winnt.h
 // private
 typedef struct _FILE_STAT_INFORMATION
 {
@@ -695,6 +696,7 @@ typedef struct _FILE_STAT_INFORMATION
     ULONG NumberOfLinks;
     ULONG EffectiveAccess;
 } FILE_STAT_INFORMATION, *PFILE_STAT_INFORMATION;
+*/
 
 // private
 typedef struct _FILE_MEMORY_PARTITION_INFORMATION

@@ -10,6 +10,7 @@ using System.Windows.Shell;
 using System.Globalization;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Media;
 
 namespace Dependencies
 {
@@ -101,6 +102,8 @@ namespace Dependencies
         #region PublicAPI
         public MainWindow()
         {
+            Helper.SetFontForWholeApp(new FontFamily(global::Dependencies.Properties.Settings.Default.Font),
+                global::Dependencies.Properties.Settings.Default.FontSize);
 
             InitializeComponent();
 

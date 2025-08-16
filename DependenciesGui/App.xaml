@@ -5,6 +5,14 @@
              Exit="App_Exit">
     <Application.Resources>
         <ResourceDictionary >
+            <!--<Style TargetType="TextElement">
+                <Setter Property="FontSize" Value="24"/>
+            </Style>
+
+            --><!-- For controls inheriting from Control --><!--
+            <Style TargetType="Control">
+                <Setter Property="FontSize" Value="24"/>
+            </Style>-->
             <ResourceDictionary.MergedDictionaries>
                 <!-- Import themes for Dragablz forms -->
                 <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/Generic.xaml" />
