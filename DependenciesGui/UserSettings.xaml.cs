@@ -240,9 +240,17 @@ namespace Dependencies
                 Dependencies.Properties.Settings.Default.BinaryCacheOptionValue = newValue;
             }
 
-            Helper.SetFontForWholeApp(new FontFamily(FontFamilyListItem.GetDisplayName(SelectedFontFamily)), int.Parse(TextBoxFontSize.Text));
+            try
+            {
+                _fontSize = double.Parse(TextBoxFontSize.Text);
+                Helper.SetFontForWholeApp(new FontFamily(FontFamilyListItem.GetDisplayName(SelectedFontFamily)), _fontSize);
+                Dependencies.Properties.Settings.Default.FontSize = _fontSize;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(this, ex.Message);
+            }
             Dependencies.Properties.Settings.Default.Font = FontFamilyListItem.GetDisplayName(SelectedFontFamily);
-            Dependencies.Properties.Settings.Default.FontSize = double.Parse(TextBoxFontSize.Text);
             this.Close();
         }
 
@@ -312,7 +320,14 @@ namespace Dependencies
             if (item != null)
             {
                 SelectedFontFamily = item.FontFamily;
-                Helper.SetFontForWholeApp(new FontFamily(FontFamilyListItem.GetDisplayName(SelectedFontFamily)), int.Parse(TextBoxFontSize.Text));
+                try
+                {
+                    Helper.SetFontForWholeApp(new FontFamily(FontFamilyListItem.GetDisplayName(SelectedFontFamily)), int.Parse(TextBoxFontSize.Text));
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show(ex.Message);
+                }
             }
         }
 

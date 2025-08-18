@@ -102,8 +102,15 @@ namespace Dependencies
         #region PublicAPI
         public MainWindow()
         {
-            Helper.SetFontForWholeApp(new FontFamily(global::Dependencies.Properties.Settings.Default.Font),
-                global::Dependencies.Properties.Settings.Default.FontSize);
+            try
+            {
+                Helper.SetFontForWholeApp(new FontFamily(global::Dependencies.Properties.Settings.Default.Font),
+                    global::Dependencies.Properties.Settings.Default.FontSize);
+            }
+            catch(Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
+            }
 
             InitializeComponent();
 
